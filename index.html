@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>The Psychic Game</title>
+</head>
+<body>
+
+	<div id="game">
+
+		<h1>The Psychic Game</h1>
+
+		<strong><p>Guess what letter I'm thinking of.</p></strong>
+		<strong><p>You have 10 guesses. Press a letter key to play.</p></strong>
+
+	</div>
+
+	<script type="text/javascript">
+
+		// Creates an array that lists out all of the options (all notes on the keyboard)
+		var options = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+		var wins = 0
+		var losses = 0
+		var guessesRemaining = 10
+
+
+
+		// This function runs whenever the user presses and releases a key.
+		document.onkeyup = function(event) {
+
+				// Determines which key was pressed and makes it lowercase
+				var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+				var lettersGuessed = userGuess
+
+				// Logs user's input
+				console.log(userGuess);
+
+				// Defines computer's choice and allows the computer to pick a random leter from the options aray
+				var computerChoice = options[Math.floor(Math.random()*options.length)];
+					
+				// Logs computer's choice
+				console.log(computerChoice);
+
+
+
+				// Defines what happens when the user guesse the computer's choice correctly, incorrectly, how many guesses the user has left, and letters the user has already chosen.
+				for (i=0; i<10; i++) {
+
+
+					if (guessesRemaining === 1) {
+
+						alert("Would you like to play again?");
+
+						losses++;
+
+						guessesRemaining = 10;
+
+						break;
+
+					}
+
+					if (userGuess === computerChoice) {
+
+						alert("You are correct!")
+
+						wins++;
+
+						guessesRemaining =10;
+
+						break;
+
+					}
+
+					if (userGuess !== computerChoice) {
+			
+						guessesRemaining--;
+
+						break;
+
+					}
+
+
+				}
+
+				var html = "<h1>The Psychic Game</h1>" +
+				"<strong><p>Guess what letter I'm thinking of.</p></strong>" +
+				"<p>Wins: " + wins + "</p>" +
+				"<p>Losses: " + losses + "</p>" +
+				"<p>Guesses Remaining: " + guessesRemaining + "</p>" +
+				"<p>Letters Guessed: " + lettersGuessed + "</p>";
+
+				document.querySelector('#game').innerHTML = html; 
+
+		}
+
+
+	</script>
+	
+	</div>
+
+
+</body>
+</html>
