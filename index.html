@@ -32,7 +32,7 @@
 				// Determines which key was pressed and makes it lowercase
 				var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 
-				var lettersGuessed = userGuess
+				var lettersGuessed = userGuess;
 
 				// Logs user's input
 				console.log(userGuess);
@@ -51,7 +51,7 @@
 
 					if (guessesRemaining === 1) {
 
-						alert("Would you like to play again?");
+						alert("Game over. Would you like to play again?");
 
 						losses++;
 
@@ -67,7 +67,7 @@
 
 						wins++;
 
-						guessesRemaining =10;
+						guessesRemaining = 10;
 
 						break;
 
